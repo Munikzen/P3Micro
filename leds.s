@@ -31,6 +31,7 @@ addition:
         mov     r1, #31 @ if counter < 31
         cmp     r0, r1
         bgt     reset @ counter = 0;
+	str     r0, [r7, #4] 
 
         ldr     r1, =GPIOA_ODR
         ldr     r0, [r7, #4]
@@ -59,6 +60,7 @@ subtraction:
         mov     r1, #0 @ if counter < 0
         cmp     r0, r1
         ble     reset @ counter = 0;
+	str     r0, [r7, #4] 
 
         ldr     r1, =GPIOA_ODR
         ldr     r0, [r7, #4]
