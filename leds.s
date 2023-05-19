@@ -21,7 +21,7 @@ addition:
         # Prologue
         push    {r7, lr}
         sub     sp, sp, #8
-        add     r7, sp,
+        add     r7, sp, #0
         str     r0, [r7, #4] @ backs up counter argument
         # Function body
         ldr     r0, [r7, #4] @ r0 <- counter
@@ -31,7 +31,7 @@ addition:
         mov     r1, #31 @ if counter < 31
         cmp     r0, r1
         bgt     reset @ counter = 0;
-	str     r0, [r7, #4] 
+        str     r0, [r7, #4] 
 
         ldr     r1, =GPIOA_ODR
         ldr     r0, [r7, #4]
@@ -50,17 +50,17 @@ subtraction:
         # Prologue
         push    {r7, lr}
         sub     sp, sp, #8
-        add     r7, sp,
+        add     r7, sp, #0
         str     r0, [r7, #4] @ backs up counter argument
         # Function body
         ldr     r0, [r7, #4] @ r0 <- counter
-        subs    r0, r0, #1
+        sub     r0, r0, #1
         str     r0, [r7, #4] @ counter--;
         ldr     r0, [r7, #4]
         mov     r1, #0 @ if counter < 0
         cmp     r0, r1
         ble     reset @ counter = 0;
-	str     r0, [r7, #4] 
+        str     r0, [r7, #4] 
 
         ldr     r1, =GPIOA_ODR
         ldr     r0, [r7, #4]
@@ -79,7 +79,7 @@ reset:
         # Prologue
         push    {r7, lr}
         sub     sp, sp, #8
-        add     r7, sp,
+        add     r7, sp, #0
         str     r0, [r7, #4] @ backs up counter
         # Function body
         mov     r0, #0
